@@ -1,0 +1,42 @@
+package view;
+
+import controller.FruitShopController;
+
+/**
+ * The Main class is the entry point of the FruitShop application.
+ *
+ */
+public class Main {
+
+    /**
+     * The main method that serves as the entry point for the FruitShop
+     * application.
+     *
+     * @param args command-line arguments (not used in this application)
+     */
+    public static void main(String[] args) {
+        FruitShopController controller = new FruitShopController();
+
+        while (true) {
+            int choice = controller.displayMenu();
+
+            switch (choice) {
+                case 1:
+                    controller.createFruit();
+                    break;
+                case 2:
+                    controller.viewFruits();
+                    break;
+                case 3:
+                    controller.viewOrders();
+                    break;
+                case 4:
+                    controller.shopping();
+                    break;
+                case 5:
+                    System.out.println("Exiting the system. Goodbye!");
+                    return;
+            }
+        }
+    }
+}
