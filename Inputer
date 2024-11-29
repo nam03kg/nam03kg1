@@ -1,0 +1,93 @@
+package util;
+
+import java.util.Scanner;
+
+/**
+ * Utility class for validating and receiving user input.
+ */
+public class Inputer {
+
+    private static final Scanner sc = new Scanner(System.in);
+
+    /**
+     * Prompts the user to input an integer within a specified range.
+     *
+     * @param title the message to display to the user.
+     * @param min the minimum acceptable value.
+     * @param max the maximum acceptable value.
+     * @return the validated integer input from the user.
+     * @throws NumberFormatException if the user inputs a non-integer value.
+     */
+    public static int inputInt(String title, int min, int max) {
+        while (true) {
+            try {
+                System.out.print(title);
+                int result = Integer.parseInt(sc.nextLine().trim());
+                if (result >= min && result <= max) {
+                    return result;
+                }
+                System.out.println("Your input must be in range [" + min + "," + max + "]");
+            } catch (NumberFormatException e) {
+                System.out.println("Your input is not an integer number.");
+            }
+        }
+    }
+
+    /**
+     * Prompts the user to input a double within a specified range.
+     *
+     * @param title the message to display to the user.
+     * @param min the minimum acceptable value.
+     * @param max the maximum acceptable value.
+     * @return the validated double input from the user.
+     * @throws NumberFormatException if the user inputs a non-double value.
+     */
+    public static double inputDouble(String title, double min, double max) {
+        while (true) {
+            try {
+                System.out.print(title);
+                double result = Double.parseDouble(sc.nextLine().trim());
+                if (result >= min && result <= max) {
+                    return result;
+                }
+                System.out.println("Your input must be in range [" + min + ", " + max + "]");
+            } catch (NumberFormatException e) {
+                System.out.println("Your input is not a valid double number.");
+            }
+        }
+    }
+
+    /**
+     * Prompts the user to input a non-null string.
+     *
+     * @param title the message to display to the user.
+     * @return the validated non-null and non-empty string input from the user.
+     */
+    public static String inputString(String title) {
+        while (true) {
+            System.out.print(title);
+            String result = sc.nextLine().trim();
+            if (result != null && !result.isEmpty()) {
+                return result;
+            }
+            System.out.println("Input cannot be empty. Please try again.");
+        }
+    }
+
+    /**
+     * Prompts the user to input either 'Y' or 'N'.
+     *
+     * @param title the message to display to the user.
+     * @return the validated character ('Y' or 'N').
+     */
+    public static String inputYesNo(String title) {
+        while (true) {
+            System.out.print(title + " (Y/N): ");
+            String result = sc.nextLine().trim().toUpperCase();
+            if (result.equals("Y") || result.equals("N")) {
+                return result;
+            }
+            System.out.println("Invalid input. Please enter 'Y' or 'N'.");
+        }
+    }
+}
